@@ -3,7 +3,7 @@
   position: relative;
   max-height: calc(100vh - 200px); /* Adjust to fit within the viewport */
   overflow-y: auto; /* Allow scrolling */
-  margin-bottom: 100px;
+  padding-bottom: 50px; /* Ensure posts are not hidden behind the ticker */
 }
 
 .post-list-container.editing {

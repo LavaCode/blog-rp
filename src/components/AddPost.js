@@ -10,9 +10,14 @@ function AddPost({ onAddPost }) {
   const [imageFile, setImageFile] = useState(null);
   const [imageComment, setImageComment] = useState('');
   const [loading, setLoading] = useState(false);
+  const [contentLength, setContentLength] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!title || !content || !imageComment) {
+      alert('All fields are required.');
+      return;
+    }
     setLoading(true);
     let imageUrl = '';
     if (imageFile) {
@@ -40,6 +45,11 @@ function AddPost({ onAddPost }) {
     setLoading(false);
   };
 
+  const handleContentChange = (value) => {
+    setContent(value);
+    setContentLength(value.replace(/<[^>]*>/g, '').length); // Remove HTML tags and count characters
+  };
+
   return (
     <div className="add-post">
       <h2>Add Post</h2>
@@ -50,10 +60,11 @@ function AddPost({ onAddPost }) {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
           maxLength="25" // Set max length for title
+          required
         />
         <ReactQuill
           value={content}
-          onChange={setContent}
+          onChange={handleContentChange}
           placeholder="Content"
           modules={{
             toolbar: [
@@ -77,9 +88,13 @@ function AddPost({ onAddPost }) {
           ]}
           bounds={'.add-post'}
         />
+        <div className="content-length">
+          {contentLength}/250
+        </div>
         <input
           type="file"
           onChange={(e) => setImageFile(e.target.files[0])}
+          required
         />
         <input
           type="text"
@@ -87,6 +102,7 @@ function AddPost({ onAddPost }) {
           onChange={(e) => setImageComment(e.target.value)}
           placeholder="Image Comment"
           maxLength="50" // Set max length for image comment
+          required
         />
         <button type="submit" disabled={loading}>
           {loading ? 'Uploading...' : 'Add Post'}

@@ -41,6 +41,7 @@ function EditPost({ post, onEditPost, setEditingPost }) {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
           maxLength="25" // Set max length for title
+          required
         />
         <ReactQuill
           value={content}
@@ -78,6 +79,7 @@ function EditPost({ post, onEditPost, setEditingPost }) {
           onChange={(e) => setImageComment(e.target.value)}
           placeholder="Image Comment"
           maxLength="50" // Set max length for image comment
+          required
         />
         <div className="button-group">
           <button type="submit">Save</button>
