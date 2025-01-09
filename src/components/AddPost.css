@@ -1,0 +1,97 @@
+.add-post {
+    background-color: #ffffff;
+    padding: 20px; /* Reduce padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Reduce margin */
+    margin-top: 100px;
+    width: 90%;
+    max-width: 600px; /* Reduce max-width */
+    text-align: left;
+  }
+  
+  .add-post h2 {
+    text-align: center;
+    margin-bottom: 10px; /* Reduce margin */
+    font-size: 1.5em; /* Reduce font size */
+    color: #333;
+  }
+  
+  .add-post form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduce gap */
+  }
+  
+  .add-post input[type="text"],
+  .add-post input[type="file"],
+  .add-post .quill {
+    display: block;
+    width: 100%;
+    padding: 10px; /* Reduce padding */
+    font-size: 1em; /* Reduce font size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .add-post .quill {
+    height: 200px; /* Reduce height */
+    padding: 0; /* Remove padding to fit within the form */
+  }
+  
+  .add-post .quill .ql-container {
+    height: 100%; /* Ensure the editor container takes full height */
+    border: none; /* Remove border to fit within the form */
+  }
+  
+  .add-post button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px; /* Reduce padding */
+    font-size: 1em; /* Reduce font size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-post button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-post input[type="file"] {
+    padding: 5px; /* Reduce padding */
+    cursor: pointer; /* Ensure the cursor is a pointer */
+    position: relative;
+    z-index: 1; /* Ensure the file input is on top */
+  }
+  
+  .add-post input[type="text"]::placeholder,
+  .add-post .quill::placeholder {
+    color: #aaa;
+  }
+  
+  .add-post input[type="text"]:focus,
+  .add-post .quill:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .add-post .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .add-post .button-group button {
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .add-post .button-group button:first-child {
+    margin-left: 0;
+  }
+  
+  .add-post .button-group button:last-child {
+    margin-right: 0;
+  }

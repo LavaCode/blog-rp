@@ -1,0 +1,170 @@
+/* General Styling for Edit Post */
+.edit-post-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 90vh; /* Ensure the container does not exceed viewport height */
+    overflow-y: auto; /* Allow scrolling if content exceeds container height */
+}
+
+.edit-post {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    width: 90%;
+    max-width: 600px;
+    text-align: left;
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+/* Title */
+.edit-post h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.edit-post form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Fields Styling */
+.edit-post input[type="text"],
+.edit-post input[type="file"],
+.edit-post .quill {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.edit-post .quill {
+    height: 300px; /* Increase height to allow more content */
+    padding: 0;
+    /* Remove padding to fit within the form */
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+.edit-post .quill .ql-container {
+    height: 100%;
+    /* Ensure the editor container takes full height */
+    border: none;
+    /* Remove border to fit within the form */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+}
+
+.edit-post .quill .ql-editor {
+    height: 100%;
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+}
+
+.edit-post .quill .ql-toolbar {
+    background-color: #f9f9f9;
+    /* Ensure toolbar has a neutral background */
+}
+
+.edit-post .quill .ql-toolbar .ql-formats button {
+    background-color: transparent;
+    /* Ensure buttons have a transparent background */
+    border: none;
+    /* Remove border from buttons */
+}
+
+.edit-post .quill .ql-toolbar .ql-formats button:hover {
+    background-color: #e0e0e0;
+    /* Add a hover effect for buttons */
+}
+
+/* Buttons */
+.edit-post button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-post button:hover {
+    background-color: #0056b3;
+}
+
+.edit-post .cancel-button {
+    background-color: #d32f2f;
+    /* Red background for cancel button */
+}
+
+.edit-post .cancel-button:hover {
+    background-color: #b71c1c;
+    /* Darker red on hover */
+}
+
+.edit-post input[type="file"] {
+    padding: 5px;
+    cursor: pointer;
+    /* Ensure the cursor is a pointer */
+    position: relative;
+    z-index: 1;
+    /* Ensure the file input is on top */
+}
+
+.edit-post input[type="text"]::placeholder,
+.edit-post .quill::placeholder {
+    color: #aaa;
+}
+
+.edit-post input[type="text"]:focus,
+.edit-post .quill:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.edit-post .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-post .button-group button {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.edit-post .button-group button:first-child {
+    margin-left: 0;
+}
+
+.edit-post .button-group button:last-child {
+    margin-right: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .edit-post {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .edit-post h2 {
+        font-size: 1.5em;
+    }
+
+    .edit-post button {
+        font-size: 0.9em;
+    }
+}
