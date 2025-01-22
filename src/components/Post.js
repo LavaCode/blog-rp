@@ -20,7 +20,7 @@ function Post({ post, setEditingPost, onRemovePost, isModerator }) {
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
       {post.imageUrl && (
-        <div className="image-container">
+        <div className="post-image">
           <img src={post.imageUrl} alt={post.title} />
           {post.imageComment && (
             <p className="image-comment">{post.imageComment}</p>

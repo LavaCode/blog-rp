@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import './EditPost.css';
 
 function EditPost({ post, onEditPost, setEditingPost }) {
@@ -11,24 +9,40 @@ function EditPost({ post, onEditPost, setEditingPost }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     let imageUrl = post.imageUrl;
 
     if (imageFile) {
       const formData = new FormData();
       formData.append('file', imageFile);
-      formData.append('upload_preset', process.env.REACT_APP_CLOUDINARY_PRESET); // Replace with your Cloudinary upload preset
+      formData.append(
+        'upload_preset',
+        process.env.REACT_APP_CLOUDINARY_PRESET
+      );
 
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, { // Replace with your Cloudinary URL
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      imageUrl = data.secure_url;
+      try {
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`,
+          { method: 'POST', body: formData }
+        );
+        const data = await response.json();
+        imageUrl = data.secure_url;
+      } catch (error) {
+        console.error('Image upload failed:', error);
+        alert('Failed to upload image. Please try again.');
+        return;
+      }
     }
 
-    onEditPost({ ...post, title, content, imageUrl, imageComment });
-    setEditingPost(null); // Close the edit form after saving
+    const updatedPost = {
+      ...post,
+      title,
+      content,
+      imageUrl,
+      imageComment,
+    };
+
+    onEditPost(updatedPost);
   };
 
   return (
@@ -40,34 +54,13 @@ function EditPost({ post, onEditPost, setEditingPost }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
-          maxLength="25" // Set max length for title
           required
         />
-        <ReactQuill
+        <textarea
           value={content}
-          onChange={setContent}
+          onChange={(e) => setContent(e.target.value)}
           placeholder="Content"
-          modules={{
-            toolbar: [
-              [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-              [{size: []}],
-              ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-              [{'list': 'ordered'}, {'list': 'bullet'}, 
-               {'indent': '-1'}, {'indent': '+1'}],
-              ['link', 'image', 'video'],
-              ['clean']                                         
-            ],
-            clipboard: {
-              matchVisual: false,
-            },
-          }}
-          formats={[
-            'header', 'font', 'size',
-            'bold', 'italic', 'underline', 'strike', 'blockquote',
-            'list', 'bullet', 'indent',
-            'link', 'image', 'video'
-          ]}
-          bounds={'.edit-post'}
+          required
         />
         <input
           type="file"
@@ -78,12 +71,16 @@ function EditPost({ post, onEditPost, setEditingPost }) {
           value={imageComment}
           onChange={(e) => setImageComment(e.target.value)}
           placeholder="Image Comment"
-          maxLength="50" // Set max length for image comment
-          required
         />
         <div className="button-group">
           <button type="submit">Save</button>
-          <button type="button" className="cancel-button" onClick={() => setEditingPost(null)}>Cancel</button>
+          <button
+            type="button"
+            className="cancel-button"
+            onClick={() => setEditingPost(null)}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

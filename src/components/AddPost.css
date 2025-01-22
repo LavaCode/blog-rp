@@ -1,103 +1,154 @@
+/* AddPost.css */
+
+/* General form styling */
 .add-post {
-    background-color: #ffffff;
-    padding: 20px; /* Reduce padding */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; /* Reduce margin */
-    margin-top: 100px;
-    width: 90%;
-    max-width: 600px; /* Reduce max-width */
-    text-align: left;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.add-post h2 {
+  text-align: center;
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Title input */
+.add-post input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.add-post input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Toolbar styling */
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.toolbar button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toolbar button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* ContentEditable Field */
+.content-editable {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  min-height: 150px;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #fff;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.content-editable:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Content Length */
+.content-length {
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* File input styling */
+.add-post input[type="file"] {
+  display: none; 
+}
+
+/* Custom file input label */
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1f8b09;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 5px;
+  transition: background-color 0.3s;
+}
+
+.file-label:hover {
+  background-color: #0056b3;
+}
+
+/* Image comment input */
+.add-post input[type="text"]:last-of-type {
+  margin: 20px auto;
+}
+
+/* Submit button */
+.add-post button {
+  width: 100%;
+  padding: 12px;
+  background-color: #285da7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-post button:hover {
+  background-color: #212d88;
+}
+
+.add-post button:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .add-post {
+    padding: 15px;
   }
-  
+
   .add-post h2 {
-    text-align: center;
-    margin-bottom: 10px; /* Reduce margin */
-    font-size: 1.5em; /* Reduce font size */
-    color: #333;
+    font-size: 20px;
   }
-  
-  .add-post form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Reduce gap */
+
+  .add-post input[type="text"], .content-editable {
+    font-size: 14px;
   }
-  
-  .add-post input[type="text"],
-  .add-post input[type="file"],
-  .add-post .quill {
-    display: block;
-    width: 100%;
-    padding: 10px; /* Reduce padding */
-    font-size: 1em; /* Reduce font size */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .add-post .quill {
-    height: 200px; /* Reduce height */
-    padding: 0; /* Remove padding to fit within the form */
-  }
-  
-  .add-post .quill .ql-container {
-    height: 100%; /* Ensure the editor container takes full height */
-    border: none; /* Remove border to fit within the form */
-  }
-  
-  .add-post .content-length {
-    text-align: right;
-    font-size: 0.9em;
-    color: #777;
-  }
-  
-  .add-post button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px; /* Reduce padding */
-    font-size: 1em; /* Reduce font size */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-post button:hover {
-    background-color: #0056b3;
-  }
-  
-  .add-post input[type="file"] {
-    padding: 5px; /* Reduce padding */
-    cursor: pointer; /* Ensure the cursor is a pointer */
-    position: relative;
-    z-index: 1; /* Ensure the file input is on top */
-  }
-  
-  .add-post input[type="text"]::placeholder,
-  .add-post .quill::placeholder {
-    color: #aaa;
-  }
-  
-  .add-post input[type="text"]:focus,
-  .add-post .quill:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .add-post .button-group {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .add-post .button-group button {
-    flex: 1;
-    margin: 0 5px;
-  }
-  
-  .add-post .button-group button:first-child {
-    margin-left: 0;
-  }
-  
-  .add-post .button-group button:last-child {
-    margin-right: 0;
-  }
+}

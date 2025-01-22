@@ -79,23 +79,11 @@ function App() {
     }
   };
 
-  const handleEditPost = async (updatedPost) => {
-    const Post = Parse.Object.extend('Post');
-    const query = new Parse.Query(Post);
-
-    try {
-      const post = await query.get(updatedPost.id);
-      post.set('title', updatedPost.title);
-      post.set('content', updatedPost.content);
-      post.set('imageUrl', updatedPost.imageUrl);
-      post.set('imageComment', updatedPost.imageComment);
-
-      const result = await post.save();
-      setPosts(posts.map(p => (p.id === updatedPost.id ? { id: result.id, ...updatedPost } : p)));
-      setEditingPost(null);
-    } catch (error) {
-      console.error('Error while editing post:', error);
-    }
+  const handleEditPost = (updatedPost) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) => (post.id === updatedPost.id ? updatedPost : post))
+    );
+    setEditingPost(null); // Close edit form
   };
 
   const handleRemovePost = async (id) => {
