@@ -28,7 +28,7 @@
 }
 
 .sub-header {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 600;
   position: fixed;
   top: 77px;
@@ -56,46 +56,21 @@
 @media (max-width: 480px) {
   .App-header {
     font-size: 1.2em;
-    padding: 10px;
+    padding: 20px;
   }
 
   .sub-header {
     position: fixed;
-    top: 70px;
+    top: 60px;
   }
 }
-
-/*
-.main-content {
-  padding-top: 140px; 
-  height: calc(100vh - 200px); 
-  overflow-y: auto;
-}
-*/
 
 .post-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start; /* Align posts at the top */
-  padding: 20px;
-  height: auto; /* Allow height to adjust based on content */
-  overflow-y: auto; /* Add scrolling for large content */
+  align-items: flex-start; 
 }
-
-
-/* .post {
-  width: 80%; 
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  margin: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
-} */
 
 .button-overlay {
   margin-top: 10px;
